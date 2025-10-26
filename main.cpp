@@ -105,6 +105,8 @@ int main() {
     auto set_endR = high_resolution_clock::now();
     auto set_durationR = duration_cast<microseconds>(set_endR - set_startR);
 
+    // Set automatically sorts
+
     // Insert operation for set
     auto set_startI = high_resolution_clock::now();
     set.insert(test);
