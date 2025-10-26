@@ -26,7 +26,7 @@ int main() {
         list.push_back(code);
     }
     auto list_endR = high_resolution_clock::now();
-    auto list_durationR = duration_cast<microseconds>(list_startR - list_endR);
+    auto list_durationR = duration_cast<microseconds>(list_endR - list_startR);
 
     cout << "List read: " << list_durationR.count() << " microseconds" << endl;
 
