@@ -14,23 +14,31 @@ int main() {
     set<string> set;
     vector<string> vector;
 
+    if(!inputFile){
+        cout << "Failed to open file" << endl;
+        return 1;
+
+    }
+
     auto start = high_resolution_clock::now();
     while(getline(inputFile,code)){
         list.push_back(code);
     }
     auto end = high_resolution_clock::now();
 
-    auto duration = duration_cast<milliseconds>(end - start);
-    cout << "List read: " << duration.count() << " milliseconds" << endl;
+    auto list_duration = duration_cast<microseconds>(end - start);
+    cout << "List read: " << list_duration.count() << " microseconds" << endl;
+
+    auto set_start = high_resolution_clock::now();
+    while(getline(inputFile, code)){
+        set.insert(code);
+    }
+    auto set_end = high_resolution_clock::now();
+
+    auto set_duration= duration_cast<microseconds>(set_end - set_start);
+    cout << "Set read: " << set_duration.count() << " microseconds" << endl;
 
     
 
     return 0;
 }
-
-/* syntax examples:
-auto start = high_resolution_clock::now()
-auto end = high_resolution_clock::now()
-auto duration = duration_cast<milliseconds>(end - start)
-duration.count() references elapsed milliseconds
-*/
