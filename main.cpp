@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include <algorithm>
 #include <fstream>
 #include <set>
@@ -107,6 +108,8 @@ int main() {
     auto set_endD = high_resolution_clock::now();
     auto set_durationD = duration_cast<microseconds>(set_endD - set_startD);
 
+    cout << right << setw(30) << "*** OUTPUT TABLE ***"<< endl;
+    cout << "Operation" << right << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
 
 
     
