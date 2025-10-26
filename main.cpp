@@ -26,9 +26,15 @@ int main() {
         list.push_back(code);
     }
     auto end = high_resolution_clock::now();
-
     auto list_duration = duration_cast<microseconds>(end - start);
+
     cout << "List read: " << list_duration.count() << " microseconds" << endl;
+
+    start = high_resolution_clock::now();
+    list.sort();
+    end = high_resolution_clock::now();
+    list_duration = duration_cast<microseconds>(end - start);
+    cout << "Vector sort: " << list_duration.count() << " microseconds" << endl;
 
     // This code moves the pointer inside inputFile back to the beginning of the file so we can read it again.
     inputFile.clear();
@@ -39,8 +45,8 @@ int main() {
         set.insert(code);
     }
     end = high_resolution_clock::now();
-
     auto set_duration= duration_cast<microseconds>(end - start);
+
     cout << "Set read: " << set_duration.count() << " microseconds" << endl;
 
     inputFile.clear();
@@ -51,7 +57,6 @@ int main() {
         vector.push_back(code);
     }
     end = high_resolution_clock::now();
-
     auto vector_duration = duration_cast<microseconds>(end - start);
 
     cout << "Vector read: " << vector_duration.count() << " microseconds" << endl;
@@ -60,7 +65,7 @@ int main() {
     sort(vector.begin(), vector.end());
     end = high_resolution_clock::now();
     vector_duration = duration_cast<microseconds>(end - start);
-    cout << "Vector sort: " << vector_duration.count() << "microseconds" << endl;
+    cout << "Vector sort: " << vector_duration.count() << " microseconds" << endl;
     
 
 
