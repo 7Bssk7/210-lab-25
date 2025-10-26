@@ -11,7 +11,9 @@
 using namespace std;
 using namespace std::chrono;
 
+// Testcode to insert
 const string test = "TESTCODE";
+const int w = 10;
 
 int main() {
     ifstream inputFile("codes.txt");
@@ -108,11 +110,11 @@ int main() {
     auto set_durationD = duration_cast<microseconds>(set_endD - set_startD);
 
     cout << right << setw(30) << "*** OUTPUT TABLE ***"<< endl;
-    cout << right << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
-    cout << right << setw(10) << "Read" << setw(10) << vector_durationR.count() << setw(10) << list_durationR.count() << setw(10) << set_durationR.count() << endl;
-    cout << right << setw(10) << "Sort" << setw(10) << vector_durationS.count() << setw(10) << list_durationS.count() << setw(10) << "-1" << endl;
-    cout << right << setw(10) << "Insert" << setw(10) << vector_durationI.count() << setw(10) << list_durationI.count() << setw(10) << set_durationI.count() << endl;
-    cout << right << setw(10) << "Delete" << setw(10) << vector_durationD.count() << setw(10) << list_durationD.count() << setw(10) << set_durationD.count() << endl;
+    cout << right << setw(w) << "Operation" << setw(w) << "Vector" << setw(w) << "List" << setw(w) << "Set" << endl;
+    cout << right << setw(w) << "Read" << setw(w) << vector_durationR.count() << setw(w) << list_durationR.count() << setw(w) << set_durationR.count() << endl;
+    cout << right << setw(w) << "Sort" << setw(w) << vector_durationS.count() << setw(w) << list_durationS.count() << setw(w) << "-1" << endl;
+    cout << right << setw(w) << "Insert" << setw(w) << vector_durationI.count() << setw(w) << list_durationI.count() << setw(w) << set_durationI.count() << endl;
+    cout << right << setw(w) << "Delete" << setw(w) << vector_durationD.count() << setw(w) << list_durationD.count() << setw(w) << set_durationD.count() << endl;
 
     return 0;
 }
