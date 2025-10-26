@@ -22,15 +22,14 @@ int main() {
 
     }
 
-
-        //VECTOR
+    //VECTOR
 
     auto vector_startR = high_resolution_clock::now();
     while(getline(inputFile, code)){
         vector.push_back(code);
     }
     auto vector_endR = high_resolution_clock::now();
-    auto vector_duration = duration_cast<microseconds>(vector_endR - vector_startR);
+    auto vector_durationR = duration_cast<microseconds>(vector_endR - vector_startR);
 
 
     auto vector_startS = high_resolution_clock::now();
@@ -42,8 +41,6 @@ int main() {
     vector.insert(vector.begin() + (vector.size()/2),"TESTCODE");
     auto vector_endI = high_resolution_clock::now();
     auto vector_durationI = duration_cast<microseconds>(vector_endI - vector_startI);
-
-
 
     auto vector_startD = high_resolution_clock::now();
     vector.erase(vector.begin() + ((vector.size()/2)-1));
@@ -67,7 +64,6 @@ int main() {
     auto list_endS = high_resolution_clock::now();
     auto list_durationS = duration_cast<microseconds>(list_endS - list_startS);
 
-
     auto list_startI = high_resolution_clock::now();
     auto it = list.begin();
     advance(it, (list.size()/2));
@@ -85,7 +81,6 @@ int main() {
     // This code moves the pointer inside inputFile back to the beginning of the file so we can read it again.
     inputFile.clear();
     inputFile.seekg(0, ios::beg);
-
 
     // SET 
 
@@ -109,10 +104,11 @@ int main() {
     auto set_durationD = duration_cast<microseconds>(set_endD - set_startD);
 
     cout << right << setw(30) << "*** OUTPUT TABLE ***"<< endl;
-    cout << "Operation" << right << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
-
-
-    
+    cout << right << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
+    cout << right << setw(10) << "Read" << setw(10) << vector_durationR.count() << setw(10) << list_durationR.count() << setw(10) << set_durationR.count() << endl;
+    cout << right << setw(10) << "Sort" << setw(10) << vector_durationS.count() << setw(10) << list_durationS.count() << setw(10) << "-1" << endl;
+    cout << right << setw(10) << "Insert" << setw(10) << vector_durationI.count() << setw(10) << list_durationI.count() << setw(10) << set_durationI.count() << endl;
+    cout << right << setw(10) << "Delete" << setw(10) << vector_durationD.count() << setw(10) << list_durationD.count() << setw(10) << set_durationD.count() << endl;
 
     return 0;
 }
