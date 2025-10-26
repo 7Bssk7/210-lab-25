@@ -49,6 +49,8 @@ int main() {
 
     cout << "Set read: " << set_duration.count() << " microseconds" << endl;
 
+    cout << "Set sort: -1 microseconds" << endl;
+
     inputFile.clear();
     inputFile.seekg(0, ios::beg);
 
