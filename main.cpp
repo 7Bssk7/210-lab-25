@@ -33,14 +33,29 @@ int main() {
     inputFile.clear();
     inputFile.seekg(0, ios::beg);
 
-    auto set_start = high_resolution_clock::now();
+    start = high_resolution_clock::now();
     while(getline(inputFile, code)){
         set.insert(code);
     }
-    auto set_end = high_resolution_clock::now();
+    end = high_resolution_clock::now();
 
-    auto set_duration= duration_cast<microseconds>(set_end - set_start);
+    auto set_duration= duration_cast<microseconds>(end - start);
     cout << "Set read: " << set_duration.count() << " microseconds" << endl;
+
+    inputFile.clear();
+    inputFile.seekg(0, ios::beg);
+
+    start = high_resolution_clock::now();
+    while(getline(inputFile, code)){
+        vector.push_back(code);
+    }
+    end = high_resolution_clock::now();
+
+    auto vector_duration = duration_cast<microseconds>(end - start);
+
+    cout << "Vector read: " << vector_duration.count() << " microseconds" << endl;
+    
+
     
     
 
