@@ -43,9 +43,17 @@ int main() {
     inputFile.clear();
     inputFile.seekg(0, ios::beg);
 
-    auto list_startD = high_resolution_clock::now();
+    auto list_startI = high_resolution_clock::now();
     auto it = list.begin();
-    advance(it, list.size()/2);
+    advance(it, (list.size()/2));
+    list.insert(it, "TESTCODE");
+    auto list_endI = high_resolution_clock::now();
+    auto list_durationI = duration_cast<microseconds>(list_endI - list_startI);
+    cout << "List insert: " << list_durationI.count() << " microseconds" << endl;
+
+    auto list_startD = high_resolution_clock::now();
+    it = list.begin();
+    advance(it, (list.size()/2)-1);
     list.erase(it);
     auto list_endD = high_resolution_clock::now();
     auto list_durationD = duration_cast<microseconds>(list_endD - list_startD);
