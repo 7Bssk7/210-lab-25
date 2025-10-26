@@ -58,6 +58,8 @@ int main() {
     auto list_endD = high_resolution_clock::now();
     auto list_durationD = duration_cast<microseconds>(list_endD - list_startD);
     cout << "List delete: " << list_durationD.count() << " microseconds" << endl;
+
+
     // SET 
 
     auto set_startR = high_resolution_clock::now();
@@ -70,6 +72,20 @@ int main() {
     cout << "Set read: " << set_durationR.count() << " microseconds" << endl;
 
     cout << "Set sort: -1 microseconds" << endl;
+
+    auto set_startI = high_resolution_clock::now();
+    set.insert("TESTCODE");
+    auto set_endI = high_resolution_clock::now();
+    auto set_durationI = duration_cast<microseconds>(set_endI - set_startI);
+    cout << "List insert: " << set_durationI.count() << " microseconds" << endl;
+
+    auto set_startD = high_resolution_clock::now();
+    auto i = set.begin();
+    advance(i, (set.size()/2)-1);
+    set.erase(i);
+    auto set_endD = high_resolution_clock::now();
+    auto set_durationD = duration_cast<microseconds>(set_endD - set_startD);
+    cout << "List delete: " << set_durationD.count() << " microseconds" << endl;
 
     inputFile.clear();
     inputFile.seekg(0, ios::beg);
