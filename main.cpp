@@ -77,7 +77,7 @@ int main() {
     set.insert("TESTCODE");
     auto set_endI = high_resolution_clock::now();
     auto set_durationI = duration_cast<microseconds>(set_endI - set_startI);
-    cout << "List insert: " << set_durationI.count() << " microseconds" << endl;
+    cout << "Set insert: " << set_durationI.count() << " microseconds" << endl;
 
     auto set_startD = high_resolution_clock::now();
     auto i = set.begin();
@@ -85,7 +85,7 @@ int main() {
     set.erase(i);
     auto set_endD = high_resolution_clock::now();
     auto set_durationD = duration_cast<microseconds>(set_endD - set_startD);
-    cout << "List delete: " << set_durationD.count() << " microseconds" << endl;
+    cout << "Set delete: " << set_durationD.count() << " microseconds" << endl;
 
     inputFile.clear();
     inputFile.seekg(0, ios::beg);
@@ -107,6 +107,13 @@ int main() {
     auto vector_endS = high_resolution_clock::now();
     auto vector_durationS = duration_cast<microseconds>(vector_endS - vector_startS);
     cout << "Vector sort: " << vector_durationS.count() << " microseconds" << endl;
+
+    auto vector_startD = high_resolution_clock::now();
+    vector.erase(vector.begin() + ((vector.size()/2)-1));
+    auto vector_endD = high_resolution_clock::now();
+    auto vector_durationD = duration_cast<microseconds>(vector_endD - vector_startD);
+    cout << "Vector delete: " << vector_durationD.count() << " microseconds" << endl;
+
 
     
     
