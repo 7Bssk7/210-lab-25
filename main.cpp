@@ -1,3 +1,5 @@
+// COMSC-210 | Lab 25 | Arkhip Finski
+// IDE used: Visual Studio
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
@@ -8,6 +10,8 @@
 #include <chrono>
 using namespace std;
 using namespace std::chrono;
+
+const string test = "TESTCODE";
 
 int main() {
     ifstream inputFile("codes.txt");
@@ -38,7 +42,7 @@ int main() {
     auto vector_durationS = duration_cast<microseconds>(vector_endS - vector_startS);
 
     auto vector_startI = high_resolution_clock::now();
-    vector.insert(vector.begin() + (vector.size()/2),"TESTCODE");
+    vector.insert(vector.begin() + (vector.size()/2),test);
     auto vector_endI = high_resolution_clock::now();
     auto vector_durationI = duration_cast<microseconds>(vector_endI - vector_startI);
 
@@ -67,7 +71,7 @@ int main() {
     auto list_startI = high_resolution_clock::now();
     auto it = list.begin();
     advance(it, (list.size()/2));
-    list.insert(it, "TESTCODE");
+    list.insert(it, test);
     auto list_endI = high_resolution_clock::now();
     auto list_durationI = duration_cast<microseconds>(list_endI - list_startI);
 
@@ -92,7 +96,7 @@ int main() {
     auto set_durationR = duration_cast<microseconds>(set_endR - set_startR);
 
     auto set_startI = high_resolution_clock::now();
-    set.insert("TESTCODE");
+    set.insert(test);
     auto set_endI = high_resolution_clock::now();
     auto set_durationI = duration_cast<microseconds>(set_endI - set_startI);
 
