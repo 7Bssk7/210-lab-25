@@ -21,6 +21,9 @@ int main() {
 
     }
 
+
+    // LIST
+
     auto list_startR = high_resolution_clock::now();
     while(getline(inputFile,code)){
         list.push_back(code);
@@ -40,6 +43,15 @@ int main() {
     inputFile.clear();
     inputFile.seekg(0, ios::beg);
 
+    auto list_startD = high_resolution_clock::now();
+    auto it = list.begin();
+    advance(it, list.size()/2);
+    list.erase(it);
+    auto list_endD = high_resolution_clock::now();
+    auto list_durationD = duration_cast<microseconds>(list_endD - list_startD);
+    cout << "List delete: " << list_durationD.count() << " microseconds" << endl;
+    // SET 
+
     auto set_startR = high_resolution_clock::now();
     while(getline(inputFile, code)){
         set.insert(code);
@@ -53,6 +65,9 @@ int main() {
 
     inputFile.clear();
     inputFile.seekg(0, ios::beg);
+
+
+    //VECTOR
 
     auto vector_startR = high_resolution_clock::now();
     while(getline(inputFile, code)){
@@ -68,6 +83,8 @@ int main() {
     auto vector_endS = high_resolution_clock::now();
     auto vector_durationS = duration_cast<microseconds>(vector_endS - vector_startS);
     cout << "Vector sort: " << vector_durationS.count() << " microseconds" << endl;
+
+    
     
 
 
