@@ -108,6 +108,14 @@ int main() {
     auto vector_durationS = duration_cast<microseconds>(vector_endS - vector_startS);
     cout << "Vector sort: " << vector_durationS.count() << " microseconds" << endl;
 
+    auto vector_startI = high_resolution_clock::now();
+    vector.insert(vector.begin() + (vector.size()/2),"TESTCODE");
+    auto vector_endI = high_resolution_clock::now();
+    auto vector_durationI = duration_cast<microseconds>(vector_endI - vector_startI);
+    cout << "Vector insert: " << vector_durationI.count() << " microseconds" << endl;
+
+
+
     auto vector_startD = high_resolution_clock::now();
     vector.erase(vector.begin() + ((vector.size()/2)-1));
     auto vector_endD = high_resolution_clock::now();
