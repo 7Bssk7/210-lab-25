@@ -22,14 +22,14 @@ int main() {
     set<string> set;
     vector<string> vector;
 
-    if(!inputFile){
+    if(!inputFile){ //checks if file was open
         cout << "Failed to open file" << endl;
         return 1;
-
     }
 
     //VECTOR
-
+  
+    // Read operation for vector 
     auto vector_startR = high_resolution_clock::now();
     while(getline(inputFile, code)){
         vector.push_back(code);
@@ -37,27 +37,31 @@ int main() {
     auto vector_endR = high_resolution_clock::now();
     auto vector_durationR = duration_cast<microseconds>(vector_endR - vector_startR);
 
-
+    // Sort operation for vector
     auto vector_startS = high_resolution_clock::now();
     sort(vector.begin(), vector.end());
     auto vector_endS = high_resolution_clock::now();
     auto vector_durationS = duration_cast<microseconds>(vector_endS - vector_startS);
 
+    // Insert operation for vector
     auto vector_startI = high_resolution_clock::now();
     vector.insert(vector.begin() + (vector.size()/2),test);
     auto vector_endI = high_resolution_clock::now();
     auto vector_durationI = duration_cast<microseconds>(vector_endI - vector_startI);
 
+    // Delete operation for vector 
     auto vector_startD = high_resolution_clock::now();
     vector.erase(vector.begin() + ((vector.size()/2)-1));
     auto vector_endD = high_resolution_clock::now();
     auto vector_durationD = duration_cast<microseconds>(vector_endD - vector_startD);
 
+    // This code moves the pointer inside inputFile back to the beginning of the file so we can read it again.
     inputFile.clear();
     inputFile.seekg(0, ios::beg);
 
     // LIST
 
+    // Read operation for list
     auto list_startR = high_resolution_clock::now();
     while(getline(inputFile,code)){
         list.push_back(code);
@@ -65,11 +69,13 @@ int main() {
     auto list_endR = high_resolution_clock::now();
     auto list_durationR = duration_cast<microseconds>(list_endR - list_startR);
 
+    // Sort operation for list
     auto list_startS = high_resolution_clock::now();
     list.sort();
     auto list_endS = high_resolution_clock::now();
     auto list_durationS = duration_cast<microseconds>(list_endS - list_startS);
 
+    // Insert operation for list
     auto list_startI = high_resolution_clock::now();
     auto it = list.begin();
     advance(it, (list.size()/2));
@@ -77,6 +83,7 @@ int main() {
     auto list_endI = high_resolution_clock::now();
     auto list_durationI = duration_cast<microseconds>(list_endI - list_startI);
 
+    // Delete operation for list
     auto list_startD = high_resolution_clock::now();
     it = list.begin();
     advance(it, (list.size()/2)-1);
@@ -90,6 +97,7 @@ int main() {
 
     // SET 
 
+    // Read operation for set
     auto set_startR = high_resolution_clock::now();
     while(getline(inputFile, code)){
         set.insert(code);
@@ -97,11 +105,13 @@ int main() {
     auto set_endR = high_resolution_clock::now();
     auto set_durationR = duration_cast<microseconds>(set_endR - set_startR);
 
+    // Insert operation for set
     auto set_startI = high_resolution_clock::now();
     set.insert(test);
     auto set_endI = high_resolution_clock::now();
     auto set_durationI = duration_cast<microseconds>(set_endI - set_startI);
 
+    // Delete operation for set
     auto set_startD = high_resolution_clock::now();
     auto i = set.begin();
     advance(i, (set.size()/2)-1);
@@ -109,6 +119,7 @@ int main() {
     auto set_endD = high_resolution_clock::now();
     auto set_durationD = duration_cast<microseconds>(set_endD - set_startD);
 
+    // Output of the race
     cout << right << setw(30) << "*** OUTPUT TABLE ***"<< endl;
     cout << right << setw(w) << "Operation" << setw(w) << "Vector" << setw(w) << "List" << setw(w) << "Set" << endl;
     cout << right << setw(w) << "Read" << setw(w) << vector_durationR.count() << setw(w) << list_durationR.count() << setw(w) << set_durationR.count() << endl;
