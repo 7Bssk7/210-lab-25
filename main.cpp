@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <fstream>
 #include <set>
 #include <list>
@@ -54,6 +55,16 @@ int main() {
     auto vector_duration = duration_cast<microseconds>(end - start);
 
     cout << "Vector read: " << vector_duration.count() << " microseconds" << endl;
+
+    start = high_resolution_clock::now();
+    sort(vector.begin(), vector.end());
+    end = high_resolution_clock::now();
+    vector_duration = duration_cast<microseconds>(end - start);
+    cout << "Vector sort: " << vector_duration.count() << "microseconds" << endl;
+    
+
+
+    
     
 
     
